@@ -268,8 +268,11 @@ static ngx_int_t handler(ngx_http_request_t *request)
                     request->headers_in.content_type->value = module_context->original_content_type_header;
                 }
 
-                request->headers_in.accept->value = module_context->original_accept_header;
-                
+                if (request->headers_in.accept != NULL)
+                {
+                   
+                    request->headers_in.accept->value = module_context->original_accept_header;
+                }
 
                 return NGX_OK;
             }
